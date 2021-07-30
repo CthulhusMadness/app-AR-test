@@ -45,5 +45,14 @@ public class AnimationControl : MonoBehaviour
         anim.speed = 0;
     }
 
+    public void SetAnimationActive(bool isActive)
+    {
+        if (isActive)
+            StartRotation();
+        else
+            StopRotation();
+        isAnimating = isActive;
+    }
+
     #endregion
 }

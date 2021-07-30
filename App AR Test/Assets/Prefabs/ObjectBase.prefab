@@ -76,7 +76,6 @@ GameObject:
   m_Component:
   - component: {fileID: 48339487818025387}
   - component: {fileID: 2413715039138114484}
-  - component: {fileID: 32957154}
   - component: {fileID: 52471562539277688}
   m_Layer: 0
   m_Name: ObjectBase
@@ -120,25 +119,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &32957154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1823583867874347197}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad116ae96a516ba48bfe61d5d96c30e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animationControl: {fileID: 52471562539277688}
-  cam: {fileID: 0}
-  target: {fileID: 4638760249469348289}
-  rotationSensitivity: 7
-  moveSensibility: 0.005
-  scaleMultiplier: 0.0025
-  precision: 10
 --- !u!114 &52471562539277688
 MonoBehaviour:
   m_ObjectHideFlags: 0
