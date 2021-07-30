@@ -9,7 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 48339487818025387}
+  - component: {fileID: 2413715039138114484}
   - component: {fileID: 32957154}
+  - component: {fileID: 52471562539277688}
   m_Layer: 0
   m_Name: ObjectBase
   m_TagString: Untagged
@@ -32,6 +34,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2413715039138114484
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823583867874347197}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 680ce2bd8fe1dcd4081f4cb52ac5e52d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &32957154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44,12 +65,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad116ae96a516ba48bfe61d5d96c30e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationControl: {fileID: 52471562539277688}
   cam: {fileID: 0}
   verimaObj: {fileID: 4638760249469348289}
   rotationSensitivity: 7
   moveSensibility: 0.005
   scaleMultiplier: 0.005
-  precision: 20
+  precision: 10
+--- !u!114 &52471562539277688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823583867874347197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0180aefa60caf224fa44919794c7a801, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAnimating: 0
+  anim: {fileID: 2413715039138114484}
 --- !u!1001 &5182119951782104618
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,10 +1,11 @@
 using UnityEngine;
-//using UnityEngine.XR.ARFoundation;
+using UnityEngine.EventSystems;
 
 public class TouchInput : MonoBehaviour
 {
     #region Fields
 
+    [SerializeField] private AnimationControl animationControl = null;
     [SerializeField] private Transform cam = null;
     [SerializeField] private Transform verimaObj = null;
     [SerializeField] private float rotationSensitivity = 10f;
@@ -18,9 +19,16 @@ public class TouchInput : MonoBehaviour
 
     #region UnityCallbacks
 
-    void Update()
+    private void Awake()
     {
-        if (Input.touchCount > 0 && verimaObj != null)
+        if (!animationControl)
+            animationControl = GetComponent<AnimationControl>();
+    }
+
+    private void Update()
+    {
+        if (EventSystem.current.currentSelectedGameObject == null &&
+            Input.touchCount > 0 && verimaObj != null && cam != null)
             GetInput();
     }
 
@@ -32,6 +40,14 @@ public class TouchInput : MonoBehaviour
     {
         Touch mainTouch = Input.GetTouch(0);
         Touch secondaryTouch = Input.GetTouch(Input.touches.Length - 1); // it will use the last recorded touch input 
+
+        if (animationControl.IsAnimating && EventSystem.current.currentSelectedGameObject == null)
+        {
+            if (Input.GetTouch(0).phase == TouchPhase.Ended)
+                animationControl.StartRotation();
+            else if (Input.GetTouch(0).phase == TouchPhase.Began)
+                animationControl.StopRotation();
+        }
 
         if (Input.touchCount == 1)
         {
@@ -48,7 +64,7 @@ public class TouchInput : MonoBehaviour
 
             #endregion
         }
-        else
+        else if (Input.touchCount > 1)
         {
             #region Scaling & Movement
 
@@ -57,7 +73,6 @@ public class TouchInput : MonoBehaviour
                 // scale
                 if (Vector3.Magnitude(mainTouch.deltaPosition - secondaryTouch.deltaPosition) >= precision)
                 {
-                    Debug.Log("scale");
                     float scaleFactor = Vector3.Magnitude(mainTouch.deltaPosition - secondaryTouch.deltaPosition);
                     float touchesDistance = Vector2.Distance(mainTouch.position, secondaryTouch.position);
                     float scaleDir = touchesDistance - previewsTouchesDistance;
@@ -68,7 +83,6 @@ public class TouchInput : MonoBehaviour
                 // moving
                 else
                 {
-                    Debug.Log("moving");
                     Vector3 yAxisMovement = cam.up * mainTouch.deltaPosition.y;
                     Vector3 xAxisMovement = cam.right * mainTouch.deltaPosition.x;
                     Vector3 movementVector = yAxisMovement + xAxisMovement;
@@ -79,7 +93,7 @@ public class TouchInput : MonoBehaviour
 
             #endregion
         }
-    }
+    } 
 
     #endregion
 
