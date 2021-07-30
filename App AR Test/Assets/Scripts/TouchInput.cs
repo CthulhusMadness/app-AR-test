@@ -7,6 +7,7 @@ public class TouchInput : MonoBehaviour
 
     [SerializeField] private AnimationControl animationControl = null;
     [SerializeField] private Transform cam = null;
+    [SerializeField] private Transform parentTarget = null;
     [SerializeField] private Transform target = null;
     [SerializeField] private float rotationSensitivity = 10f;
     [SerializeField] private float moveSensibility = 5f;
@@ -41,7 +42,7 @@ public class TouchInput : MonoBehaviour
         Touch mainTouch = Input.GetTouch(0);
         Touch secondaryTouch = Input.GetTouch(Input.touches.Length - 1); // it will use the last recorded touch input 
 
-        if (animationControl.IsAnimating && EventSystem.current.currentSelectedGameObject == null)
+        if (animationControl.IsAnimating)
         {
             if (Input.GetTouch(0).phase == TouchPhase.Ended)
                 animationControl.StartRotation();
@@ -76,7 +77,7 @@ public class TouchInput : MonoBehaviour
                     float touchesDistance = Vector2.Distance(mainTouch.position, secondaryTouch.position);
                     float scaleDir = touchesDistance - previewsTouchesDistance;
                     float dirSign = scaleDir != 0 ? Mathf.Sign(scaleDir) : 0;
-                    transform.localScale += Vector3.one * scaleFactor * scaleMultiplier * dirSign;
+                    parentTarget.localScale += Vector3.one * scaleFactor * scaleMultiplier * dirSign;
                     previewsTouchesDistance = touchesDistance;
                 }
                 // moving
@@ -86,7 +87,7 @@ public class TouchInput : MonoBehaviour
                     Vector3 xAxisMovement = cam.right * mainTouch.deltaPosition.x;
                     Vector3 movementVector = yAxisMovement + xAxisMovement;
                     float movementSpeed = moveSensibility * Time.deltaTime;
-                    transform.Translate(movementVector * movementSpeed, Space.World);
+                    parentTarget.Translate(movementVector * movementSpeed, Space.World);
                 }
             }
 
