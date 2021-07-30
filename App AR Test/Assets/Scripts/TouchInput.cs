@@ -7,7 +7,7 @@ public class TouchInput : MonoBehaviour
 
     [SerializeField] private AnimationControl animationControl = null;
     [SerializeField] private Transform cam = null;
-    [SerializeField] private Transform verimaObj = null;
+    [SerializeField] private Transform target = null;
     [SerializeField] private float rotationSensitivity = 10f;
     [SerializeField] private float moveSensibility = 5f;
     [SerializeField] private float scaleMultiplier = 0.1f;
@@ -28,7 +28,7 @@ public class TouchInput : MonoBehaviour
     private void Update()
     {
         if (EventSystem.current.currentSelectedGameObject == null &&
-            Input.touchCount > 0 && verimaObj != null && cam != null)
+            Input.touchCount > 0 && target != null && cam != null)
             GetInput();
     }
 
@@ -52,14 +52,13 @@ public class TouchInput : MonoBehaviour
         if (Input.touchCount == 1)
         {
             #region Rotation
-
             if (mainTouch.phase == TouchPhase.Moved)
             {
                 Vector3 yAxisRotation = cam.up * -mainTouch.deltaPosition.x;
                 Vector3 xAxisRotation = cam.right * mainTouch.deltaPosition.y;
                 Vector3 rotationVector = yAxisRotation + xAxisRotation;
                 float rotationSpeed = mainTouch.deltaPosition.magnitude * rotationSensitivity * Time.deltaTime;
-                verimaObj.RotateAround(verimaObj.position, rotationVector, rotationSpeed);
+                target.RotateAround(target.position, rotationVector, rotationSpeed);
             }
 
             #endregion

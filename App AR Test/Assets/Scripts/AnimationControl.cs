@@ -33,7 +33,6 @@ public class AnimationControl : MonoBehaviour
 
     public void StartRotation()
     {
-        Debug.Log("Start");
         anim.speed = 1;
         AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
         if (stateInfo.IsName("RotateY"))
@@ -43,7 +42,6 @@ public class AnimationControl : MonoBehaviour
 
     public void StopRotation()
     {
-        Debug.Log("Stop");
         anim.speed = 0;
     }
 
