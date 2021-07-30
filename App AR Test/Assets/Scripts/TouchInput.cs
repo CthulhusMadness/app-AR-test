@@ -77,7 +77,7 @@ public class TouchInput : MonoBehaviour
                     float touchesDistance = Vector2.Distance(mainTouch.position, secondaryTouch.position);
                     float scaleDir = touchesDistance - previewsTouchesDistance;
                     float dirSign = scaleDir != 0 ? Mathf.Sign(scaleDir) : 0;
-                    verimaObj.localScale += Vector3.one * scaleFactor * scaleMultiplier * dirSign;
+                    transform.localScale += Vector3.one * scaleFactor * scaleMultiplier * dirSign;
                     previewsTouchesDistance = touchesDistance;
                 }
                 // moving
@@ -87,7 +87,7 @@ public class TouchInput : MonoBehaviour
                     Vector3 xAxisMovement = cam.right * mainTouch.deltaPosition.x;
                     Vector3 movementVector = yAxisMovement + xAxisMovement;
                     float movementSpeed = moveSensibility * Time.deltaTime;
-                    verimaObj.Translate(movementVector * movementSpeed, Space.World);
+                    transform.Translate(movementVector * movementSpeed, Space.World);
                 }
             }
 
