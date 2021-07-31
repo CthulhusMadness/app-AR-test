@@ -43,7 +43,6 @@ public class CanvasResize : MonoBehaviour
             new Vector2(100000, 0)  // left
         };
 
-        Debug.Log(mesh.vertexCount);
         for (int i = 0; i < mesh.vertexCount; i++)
         {
             // check for highest vertex
@@ -61,11 +60,6 @@ public class CanvasResize : MonoBehaviour
         }
 
         return (extremeVertices[0], extremeVertices[1], extremeVertices[2], extremeVertices[3]);
-    }
-
-    private Vector2 TransformPoint(Vector2 vector2)
-    {
-        return meshParent.TransformPoint(vector2);
     }
 
     #endregion

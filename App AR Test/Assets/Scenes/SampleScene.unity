@@ -133,6 +133,8 @@ GameObject:
   m_Component:
   - component: {fileID: 40919616}
   - component: {fileID: 40919615}
+  - component: {fileID: 40919619}
+  - component: {fileID: 40919618}
   - component: {fileID: 40919617}
   m_Layer: 0
   m_Name: AR Session Origin
@@ -182,6 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationControl: {fileID: 223974229}
+  arRaycastManager: {fileID: 40919618}
   cam: {fileID: 1114040585}
   parentTarget: {fileID: 223974228}
   target: {fileID: 165585584}
@@ -189,6 +192,33 @@ MonoBehaviour:
   moveSensibility: 0.009
   scaleMultiplier: 0.0025
   precision: 15
+--- !u!114 &40919618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40919614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa17d122634046b4a8e23048891fafc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RaycastPrefab: {fileID: 0}
+--- !u!114 &40919619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40919614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1760703bbd54c04488a8d10600262ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PlanePrefab: {fileID: 8056149869027982678, guid: d057d2c2a46a62146bfecbdc1dad2504, type: 3}
+  m_DetectionMode: -1
 --- !u!1 &53096090
 GameObject:
   m_ObjectHideFlags: 0
@@ -856,7 +886,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 127
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!114 &834876453
 MonoBehaviour:
@@ -2881,14 +2911,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 1114040585}
-    - target: {fileID: 0}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 48339487818025387, guid: fab8c3a5b4aba424a8c000dcd0ac8bfa, type: 3}
       propertyPath: m_RootOrder
       value: 3
